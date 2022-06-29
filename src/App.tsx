@@ -1,6 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/homePage';
+import { AboutPage } from './pages/aboutPage';
+
 function App() {
   return (
-    <h1>Hello React + TS + SASS!</h1>
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/about' element={<AboutPage />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
