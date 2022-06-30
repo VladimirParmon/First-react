@@ -26,7 +26,7 @@ function App() {
     <Header />
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path='/' element={<HomePage tasksData={tasks} setTasks={setTasks} />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='*' element={<Page404 />} />
       </Routes>

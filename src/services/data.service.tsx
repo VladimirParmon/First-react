@@ -34,17 +34,17 @@ export class DataService {
     return data;
   }
 
-  public static async deleteTask(tasks: TaskInfo[], taskToDelete: TaskInfo): Promise<TaskInfo[] | void> {
-    const response = await fetch((fetchAddress + '/' + taskToDelete.id), {
+  public static async deleteTask(tasks: TaskInfo[], taskToDeleteId: string): Promise<TaskInfo[] | null> {
+    const response = await fetch((fetchAddress + '/' + taskToDeleteId), {
       method: CRUD.DELETE,
     })
 
     if(response.status === 200) {
-      const data: TaskInfo[] = tasks.filter((task) => task.id !== taskToDelete.id);
+      const data: TaskInfo[] = tasks.filter((task) => task.id !== taskToDeleteId);
       return data;
     } else {
       alert('Was not unable to delete the task!');
-      return;
+      return null;
     }
   }
 }
