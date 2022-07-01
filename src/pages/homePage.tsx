@@ -1,7 +1,7 @@
+import { GlobalProps } from "../models/models"
 import { TaskManager } from "../components/taskManager/taskManager"
-import { TaskInfo } from "../models/models"
 
-export function HomePage(props: {tasksData: TaskInfo[], setTasks: React.Dispatch<React.SetStateAction<TaskInfo[]>>}) {
+export function HomePage(props: GlobalProps) {
   return (
     <div className="centerContainer">
       <TaskManager {...props}/>

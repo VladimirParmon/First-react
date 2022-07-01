@@ -3,22 +3,23 @@ import { TaskComponent } from '../task/task';
 import { TaskInfo } from '../../models/models';
 import { DataService } from '../../services/data.service';
 import { AddTaskComponent } from '../addTask/addTask';
+import { GlobalProps } from "../../models/models";
 
-export function TaskManager(props: { tasksData: TaskInfo[], setTasks: React.Dispatch<React.SetStateAction<TaskInfo[]>>}) {
+export function TaskManager(props: GlobalProps) {
   
   async function deleteTask(taskId: string) {
-    const response = await DataService.deleteTask(props.tasksData, taskId);
+    const response = await DataService.deleteTask(props.tasks, taskId);
     if(response) props.setTasks(response);
   }
   
   async function toggleReminder(taskId: string) {
-    const taskInfo = props.tasksData.find((task) => task.id === taskId);
+    const taskInfo = props.tasks.find((task) => task.id === taskId);
     if(taskInfo){
       taskInfo.reminder = !taskInfo.reminder
       const response: TaskInfo = await DataService.updateTask(taskInfo);
 
       if(response) {
-        props.setTasks(props.tasksData.map((task) => task.id === taskId ? response : task));
+        props.setTasks(props.tasks.map((task) => task.id === taskId ? response : task));
       };
     } 
   }
@@ -32,7 +33,7 @@ export function TaskManager(props: { tasksData: TaskInfo[], setTasks: React.Disp
         <AddTaskComponent {...props}/>
       </div>
       <div className='task-manager__tasks'>
-        {props.tasksData.map(function(task, i) {
+        {props.tasks.map(function(task, i) {
           return <TaskComponent taskData={task} key={i} deleteTask={deleteTask} toggleReminder={toggleReminder}/>;
         })}
       </div>

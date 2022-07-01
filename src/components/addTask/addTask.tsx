@@ -1,9 +1,9 @@
 import { useState } from "react";
 import './addTask.scss';
 import { DataService } from "../../services/data.service";
-import { TaskInfo } from "../../models/models";
+import { GlobalProps, TaskInfo } from "../../models/models";
 
-export function AddTaskComponent(props: {tasksData: TaskInfo[], setTasks: React.Dispatch<React.SetStateAction<TaskInfo[]>>}) {
+export function AddTaskComponent(props: GlobalProps) {
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDate, setTaskDate] = useState('');
   const [taskReminder, setTaskReminder] = useState(false);
@@ -15,7 +15,7 @@ export function AddTaskComponent(props: {tasksData: TaskInfo[], setTasks: React.
       day: taskDate,
       reminder: taskReminder
     }
-    const response = await DataService.addTask(props.tasksData, newTask);
+    const response = await DataService.addTask(props.tasks, newTask);
     props.setTasks(response);
 
     setTaskTitle('');

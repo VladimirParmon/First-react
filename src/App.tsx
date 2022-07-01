@@ -5,12 +5,21 @@ import { Header } from './components/header/header';
 import { Page404 } from './pages/page404';
 import { useEffect, useState } from 'react';
 import { DataService } from './services/data.service';
-import { TaskInfo } from './models/models';
+import { GlobalProps, TaskInfo } from './models/models';
 
 function App() {
   const [isAddTaskButtonShown, setShowAddTaskButton] = useState<boolean>(true);
   const [isTaskFormsExpanded, setTaskFormsExpanded] = useState<boolean>(false);
   const [tasks, setTasks] = useState<TaskInfo[]>([]);
+
+  const props: GlobalProps = {
+    isAddTaskButtonShown,
+    setShowAddTaskButton,
+    isTaskFormsExpanded,
+    setTaskFormsExpanded,
+    tasks,
+    setTasks
+  }
 
   useEffect(() => {
     const getTasks = async () => {
@@ -26,7 +35,7 @@ function App() {
     <Header />
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage tasksData={tasks} setTasks={setTasks} />} />
+        <Route path='/' element={<HomePage {...props}/>} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='*' element={<Page404 />} />
       </Routes>
