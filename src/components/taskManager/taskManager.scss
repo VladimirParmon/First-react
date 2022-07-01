@@ -32,9 +32,23 @@
   &__tasks {
     height: 320px;
     overflow-y: auto;
+    z-index: 2;
   }
 
   .task-component:not(:last-of-type) {
     margin-bottom: 15px;
   }
+
+  &__add {
+    transition: 1s;
+    height: 260px;
+    z-index: 1;
+  }
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

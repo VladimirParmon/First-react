@@ -8,13 +8,10 @@ import { DataService } from './services/data.service';
 import { GlobalProps, TaskInfo } from './models/models';
 
 function App() {
-  const [isAddTaskButtonShown, setShowAddTaskButton] = useState<boolean>(true);
   const [isTaskFormsExpanded, setTaskFormsExpanded] = useState<boolean>(false);
   const [tasks, setTasks] = useState<TaskInfo[]>([]);
 
   const props: GlobalProps = {
-    isAddTaskButtonShown,
-    setShowAddTaskButton,
     isTaskFormsExpanded,
     setTaskFormsExpanded,
     tasks,
