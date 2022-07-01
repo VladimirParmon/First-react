@@ -2,7 +2,8 @@ export enum CRUD {
   POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE',
-  GET = 'GET'
+  GET = 'GET',
+  PATCH = 'PATCH'
 }
 
 export enum Themes {

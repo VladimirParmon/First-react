@@ -1,0 +1,21 @@
+.addTask {
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__reminder {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    input {
+      margin-right: 20px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    color: white;
+  }
+}

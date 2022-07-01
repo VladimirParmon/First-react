@@ -20,18 +20,29 @@ export class DataService {
     return data;
   }
 
+  public static async updateTask(task: TaskInfo): Promise<TaskInfo> {
+    const response: Response = await fetch(fetchAddress + '/' + task.id, {
+      method: CRUD.PUT,
+      headers: JSONHeader,
+      body: JSON.stringify(task),
+    });
+    const data: TaskInfo = await response.json();
+    return data;
+  }
+
   public static async addTask(tasks: TaskInfo[], newTaskInfo: Omit<TaskInfo, 'id'>): Promise<TaskInfo[]> {
     const randomId: string = this.getRandomId();
-    const newTask = { randomId, ...newTaskInfo }
+    const newTask = { id: randomId, ...newTaskInfo }
 
     const response: Response = await fetch(fetchAddress, {
       method: CRUD.POST,
       headers: JSONHeader,
-      body: JSON.stringify({...tasks, ...newTask}),
+      body: JSON.stringify(newTask),
     })
 
-    const data: TaskInfo[] = await response.json();
-    return data;
+    const data: TaskInfo = await response.json();
+    const newState = [...tasks, data];
+    return newState;
   }
 
   public static async deleteTask(tasks: TaskInfo[], taskToDeleteId: string): Promise<TaskInfo[] | null> {

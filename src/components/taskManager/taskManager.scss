@@ -1,9 +1,10 @@
 .task-manager {
   width: 500px;
-  height: 70vh;
+  height: 72vh;
   border: 2px solid black;
   padding: 15px;
   border-radius: 5px;
+  
 
   &__header {
     width: 100%;
@@ -26,6 +27,11 @@
     &:hover {
       background-color: wheat;
     }
+  }
+
+  &__tasks {
+    height: 320px;
+    overflow-y: auto;
   }
 
   .task-component:not(:last-of-type) {
