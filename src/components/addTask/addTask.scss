@@ -18,4 +18,10 @@
     padding: 10px;
     color: white;
   }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+  }
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import './addTask.scss';
 import { DataService } from "../../services/data.service";
 import { GlobalProps, TaskInfo } from "../../models/models";
+import { Button, TextField } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
 
 export function AddTaskComponent(props: GlobalProps) {
   const [taskTitle, setTaskTitle] = useState('');
@@ -25,18 +27,17 @@ export function AddTaskComponent(props: GlobalProps) {
 
   return (
   <form className="addTask" onSubmit={(e) => submitTask(e)}>
-    <p className="addTask__p">Task:</p>
-    <input className="addTask__input" value={taskTitle} onChange={(event) => setTaskTitle(event.target.value)} placeholder="Add task"></input>
-    
-    <p className="addTask__p">Day & time:</p>
-    <input className="addTask__input" value={taskDate} onChange={(event) => setTaskDate(event.target.value)} placeholder="Add date & time"></input>
-    
+    <div className="addTask__inputs">
+      <TextField className="addTask__input" label="Add task" variant="standard" value={taskTitle} onChange={(event) => setTaskTitle(event.target.value)}/>
+      <TextField className="addTask__input" label="Add date & time" variant="standard" value={taskDate} onChange={(event) => setTaskDate(event.target.value)}/>
+    </div>
+
     <div className="addTask__reminder">
       <p className="addTask__p">Set reminder:</p>
-      <input type="checkbox" checked={taskReminder} onChange={(event) => setTaskReminder(event.target.checked)}/> 
+      <Checkbox checked={taskReminder} onChange={(event) => setTaskReminder(event.target.checked)}/>
     </div>
     
-    <button className="addTask__button" type="submit">Submit</button>
+    <Button className="addTask__button" type="submit" color='primary' variant="outlined">Submit</Button>
   </form>
   )
 }

@@ -4,6 +4,7 @@ import { TaskInfo } from '../../models/models';
 import { DataService } from '../../services/data.service';
 import { AddTaskComponent } from '../addTask/addTask';
 import { GlobalProps } from "../../models/models";
+import { Button } from '@mui/material';
 
 export function TaskManager(props: GlobalProps) {
   
@@ -32,10 +33,7 @@ export function TaskManager(props: GlobalProps) {
     <div className="task-manager">
       <div className="task-manager__header">
         <h2 className="task-manager__heading">Task manager</h2>
-        <button className='task-manager__button task-manager__button-heading' 
-          onClick={() => toggleAddTaskSection()}
-        >{props.isTaskFormsExpanded ? 'Close' : 'Add'}
-        </button>
+        <Button color='primary' className="task-manager__button" variant="outlined" onClick={() => toggleAddTaskSection()}>{props.isTaskFormsExpanded ? 'Close' : 'Add'}</Button>
       </div>
       <div className={`task-manager__add ${props.isTaskFormsExpanded ? '' : 'hidden'}`}>
         <AddTaskComponent {...props}/>

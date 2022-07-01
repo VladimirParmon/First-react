@@ -4,6 +4,7 @@
   border: 2px solid black;
   padding: 15px;
   border-radius: 5px;
+  margin-bottom: 15px;
   
 
   &__header {
@@ -41,7 +42,7 @@
 
   &__add {
     transition: 1s;
-    height: 260px;
+    height: 240px;
     z-index: 1;
   }
 }

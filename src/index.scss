@@ -17,6 +17,7 @@ $headerHeight: 50px;
 
 .centerContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -25,4 +26,8 @@ $headerHeight: 50px;
 
 * {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
